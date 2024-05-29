@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <!-- Form View -->
+        <record id="view_general_form" model="ir.ui.view">
+            <field name="name">general.form</field>
+            <field name="model">general.fields</field>
+            <field name="arch" type="xml">
+                <form string="general">
+                     <header>
+                         <field name="gender" widget="statusbar" options="{'clickable': '1'}"/>
+                     </header>
+                    <sheet>
+
+                        <notebook>
+                            <page string="Char Fields">
+                        <group string="Text Fields">
+                            <field name="text1"/>
+                            <field name="text2" widget="email"/>
+                            <field name="text3" widget="phone"/>
+                            <field name="text4" widget="url"/>
+                            <field name="text5" widget="badge"/>
+                            <field name="text6" widget="CopyClipboardChar"/>
+                            <field name="multiline_text"/>
+                        </group>
+                        </page>
+
+                            <page string="Integer Fields">
+                        <group string="Integer Fields">
+                            <field name="n1"/>
+                            <field name="n3" widget="percentpie"/>
+                            <field name="n4" widget="progressbar"/>
+                        </group>
+                        </page>
+
+
+
+                            <page string="Float Fields">
+                         <group string="Decimal Fields">
+                            <field name="f1"/>
+                            <field name="f2" widget="percentage"/>
+                             <field name="f4" widget="progressbar"/>
+
+                            <field name="f3" widget="percentpie"/>
+                             <field name="currency_id"/>
+                            <field name="f5" widget="monetary"/>
+                        </group>
+                        </page>
+
+
+                            <page string="Selection Fields">
+                        <group string="Selection">
+                            <field name="gender"/>
+                            <field name="gender" widget="badge"/>
+                            <field name="gender" widget="selection_badge"/>
+                            <field name="gender" widget="radio"/>
+                            <field name="gender" widget="priority"/>
+                        </group>
+                        </page>
+
+
+
+                        <page string="Boolean Fields">
+                        <group string="Boolean Fields">
+                            <field name="is_boolean"/>
+                            <field name="is_boolean" widget="boolean_toggle"/>
+                            <field name="is_boolean" widget="boolean_favorite"/>
+                        </group>
+                        </page>
+
+
+                            <page string="Date Fields">
+                        <group string="Date Fields">
+                            <field name="expiry_date" widget="remaining_days"/>
+                            <field name="dt_datetime"/>
+                        </group>
+                            </page>
+
+
+
+                            <page string="Binary Field">
+                        <group string="Binary Field">
+                            <field name="txt_file"/>
+                            <field name="image" widget="image"/>
+                            <field name="pdf" widget="pdf_viewer"/>
+                            <field name="sign" widget="signature"/>
+                        </group>
+                            </page>
+
+                            <page string="Relation Fields">
+                        <group>
+                            <field name="student_id" options="{'no_create': True}"/>
+                            <field name="student_age"/>
+                        </group>
+                                 <notebook>
+                                <page string="Education">
+                                    <field name="subject_ids" widget="many2many_tags"/>
+
+                                </page>
+                            </notebook>
+                            </page>
+
+
+
+
+
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+        <record id="view_general_tree" model="ir.ui.view">
+            <field name="name">general.tree</field>
+            <field name="model">general.fields</field>
+            <field name="arch" type="xml">
+                <tree string="general">
+                            <field name="text1"/>
+                            <field name="text2" widget='email'/>
+                            <field name="text3" widget="phone"/>
+                            <field name="text4" widget="url"/>
+                            <field name="text5" widget="badge"/>
+                            <field name="expiry_date" widget="remaining_days"/>
+                    </tree>
+            </field>
+        </record>
+
+
+        #Action
+        <record id="action_general_tree" model="ir.actions.act_window">
+            <field name="name">General</field>
+            <field name="res_model">general.fields</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_general_tree"/>
+        </record>
+
+
+        <menuitem id="general_menu" name="General" parent="school_menu" action="action_general_tree"/>
+
+
+
+
+
+    </data>
+</odoo>

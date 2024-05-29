@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+<!--        Inherit Search view-->
+        <record id="view_partner_filter" model="ir.ui.view">
+            <field name="name">res.partner.view.filter</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <search>
+                    <searchpanel>
+                        <field name="status" icon="fa-users" enable_counters="1"/>
+                    </searchpanel>
+
+                </search>
+            </field>
+          </record>
+
+<!--        Inherit List View-->
+        <record id="res_partner_tree_view" model="ir.ui.view">
+            <field name="name">res.partner.view.list</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="inside">
+                 <header>
+
+                      <button string="Mark as Paid" name="action_paid" class="oe_highlight" type="object"
+                      invisible="context.get('hide_student_field')"/>
+                 </header>
+             </xpath>
+                <xpath expr="//tree" position="inside">
+                     <field name="teacher_id" invisible="context.get('hide_student_field')" widget="many2one_avatar_user"/>
+                </xpath>
+
+<!--                 <xpath expr="//tree" position="attributes">-->
+<!--                     <attribute name="decoration-danger">status == "unpaid"</attribute>-->
+<!--                     <attribute name="decoration-success">status == "paid"</attribute>-->
+<!--             </xpath>-->
+                <field name="vat" position="replace">
+                </field>
+                <field name="user_id" position="replace">
+                </field>
+                <field name="company_id" position="replace">
+                </field>
+                <field name="is_company" position="replace">
+                </field>
+                <field name="parent_id" position="replace">
+                </field>
+                <field name="function" position="replace">
+                </field>
+                <field name="active" position="replace">
+                </field>
+                <field name="category_id" position="replace">
+                </field>
+
+                    <field name="activity_ids" position="replace">
+                        <field name="status" widget="badge"
+                      decoration-success="status == 'paid'"
+                      decoration-danger="status == 'unpaid'"
+                      invisible="context.get('hide_student_field')"/>
+                    </field>
+            </field>
+          </record>
+
+
+<!--        Inherit Kanban-->
+          <record id="view_partner_kanban" model="ir.ui.view">
+            <field name="name">res.partner.view.kanban.calendar</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_tags_section')]" position="after">
+                <field name="new_gender"/>
+
+                </xpath>
+             <xpath expr="//field[@name='activity_ids']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+                <xpath expr="//field[@name='category_id']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='parent_id']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='function']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+            </field>
+          </record>
+
+
+
+
+<!--        Inherited Student form-->
+
+     <record id="res_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.student</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//form/sheet" position="before">
+                 <header>
+                      <button string="ORM" name="action_orm" class="oe_highlight" type="object"/>
+                      <button string="Complaint" name="action_complaint" class="oe_highlight" type="object"
+                      invisible="context.get('hide_student_field')"/>
+                      <field name="status" widget="statusbar" options="{'clickable': '1'}" invisible="context.get('hide_student_field')"/>
+                 </header>
+             </xpath>
+
+            <xpath expr="//notebook" position="attributes">
+                     <attribute name="invisible">1</attribute>
+            </xpath>
+        <xpath expr="//field[@name='title']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+            <xpath expr="//field[@name='name']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+            <xpath expr="//field[@name='function']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+             <xpath expr="//field[@name='parent_id']" position="attributes">
+             <attribute name="invisible">1</attribute>
+        </xpath>
+            <xpath expr="//field[@name='activity_ids']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+           <xpath expr="//field[@name='type']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+             <span class="o_form_label o_td_label" name="address_name">
+                                <b >Address</b>
+                            </span>
+            <xpath expr="//field[@name='user_ids']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='vat']" position="replace">
+               <field name="dob"/>
+               <field name="age"/>
+               <field name="new_gender"/>
+               <field name="admission_date" invisible="context.get('hide_student_field')"/>
+               <field name="joining_date" invisible="context.get('hide_teacher_field')"/>
+               <field name="new_class_id"/>
+               <field name="new_section_id"/>
+            </xpath>
+           <xpath expr="//field[@name='website']" position="after">
+            <field name="identity"/>
+            <field name="class_id" invisible="context.get('hide_student_field')"/>
+            <field name="teacher_id" invisible="context.get('hide_student_field')" widget="many2one_avatar_user"/>
+            <field name="subject_taught" invisible="context.get('hide_teacher_field')"/>
+            <field name="class_ids" invisible="context.get('hide_teacher_field')"/>
+            <field name="sport_name" invisible="context.get('hide_student_field')"/>
+        </xpath>
+            <xpath expr="//div[hasclass('oe_chatter')]" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+
+            <field name="category_id" position="replace"/>
+            <field name="company_type" position="replace"/>
+             <xpath expr="//form/sheet" position="inside">
+                 <notebook>
+                     <page name="Education" invisible="context.get('hide_student_field')">
+                         <group string="Education Details">
+                             <field name="new_subjects_ids"/>
+<!--                               <field name="new_subject_details"/>-->
+                         </group>
+                     </page>
+
+
+
+
+                     <page name="Sports" invisible="(sport_name == False)">
+
+                        <group string="Cricket Details"  invisible="(sport_name != 'cricket')">
+                            <group string="Team Specifics">
+                                <field name="c_team"/>
+                                <field name="style"/>
+                            </group>
+
+                             <group string="Match Records">
+                                <field name="match_played"/>
+                                <field name="inning_played"/>
+                                <field name="c_matches_won"/>
+                                <field name="matches_lost"/>
+                                <field name="matches_draw"/>
+                            </group>
+
+                            <group string="Batting statistics">
+                                <field name="total_run"/>
+                                <field name="centuries"/>
+                                <field name="half_centuries"/>
+                                <field name="fours"/>
+                                <field name="sixes"/>
+                                <field name="batting_average"/>
+                            </group>
+
+                             <group string="Bowling statistics">
+                                <field name="wicket"/>
+                                <field name="dot_balls"/>
+                                <field name="bowling_average"/>
+                                <field name="five_wicket"/>
+                            </group>
+
+                             <group string="Fielding statistics">
+                                <field name="catches"/>
+                                <field name="run_outs"/>
+                                <field name="stumping"/>
+                            </group>
+
+                             <group string="Performance Matrics">
+                                <field name="man_of_the_match"/>
+                                <field name="man_of_the_series"/>
+                            </group>
+                        </group>
+
+                          <group string="Football Details"  invisible="(sport_name != 'football')">
+                              <group string="Team Specifics">
+                                <field name="f_team"/>
+                                <field name="position"/>
+                            </group>
+
+                             <group string="Match Records">
+                                 <field name="matches_played"/>
+                                 <field name="matches_started"/>
+                                 <field name="f_matches_won"/>
+                                 <field name="goals_scored_in_wins"/>
+                                 <field name="clean_sheets_in_wins"/>
+                             </group>
+
+                              <group string="Match Statistics">
+                                 <field name="goals_scored"/>
+                                 <field name="assists"/>
+                                 <field name="pass_completion_rate"/>
+                                 <field name="shots_on_target"/>
+                                 <field name="minutes_played"/>
+                             </group>
+
+                               <group string="Team Statistics">
+                                 <field name="possession_percentage"/>
+                                 <field name="shots_on_goal"/>
+                                 <field name="passes_completed"/>
+                                 <field name="corners_taken"/>
+                                 <field name="tackles"/>
+                             </group>
+
+                             <group string="Performance Matrics">
+                                 <field name="man_of_the_match_awards"/>
+                                 <field name="average_rating"/>
+                                 <field name="distance_covered"/>
+                                 <field name="sprint_speed"/>
+                                 <field name="aerial_duels_won"/>
+                             </group>
+                         </group>
+
+                     </page>
+                 </notebook>
+             </xpath>
+        </field>
+     </record>
+
+
+<!--         Inherit Student Menu-->
+       <record id="action_contacts_student" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="domain">[('identity', '=', 'Student')]</field>
+        <field name="context">{'default_identity': 'Student', 'hide_teacher_field': 1}</field>
+       </record>
+
+
+    </data>
+</odoo>

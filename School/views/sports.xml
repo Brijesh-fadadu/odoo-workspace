@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <!-- Form View -->
+        <record id="view_sport_form" model="ir.ui.view">
+            <field name="name">sport.form</field>
+            <field name="model">sport.activity</field>
+            <field name="arch" type="xml">
+                <form string="Sports" create="False">
+                    <sheet>
+                        <group>
+                            <field name="p_id" invisible="1"/>
+                            <field name="sport_name" invisible="1"/>
+                        </group>
+
+                     <group string="Player Details">
+                        <field name="player_name"/>
+                        <field name="player_age"/>
+                        <field name="player_gender"/>
+                        <field name="player_phone"/>
+                         <field name="c_team" invisible="(sport_name != 'cricket')"/>
+                         <field name="style" invisible="(sport_name != 'cricket')"/>
+                         <field name="f_team" invisible="(sport_name != 'football')"/>
+                         <field name="position" invisible="(sport_name != 'football')"/>
+                    </group>
+
+                        <group string="Cricket Details"  invisible="(sport_name != 'cricket')">
+                             <group string="Match Records">
+                                <field name="match_played"/>
+                                <field name="inning_played"/>
+                                <field name="c_matches_won"/>
+                                <field name="matches_lost"/>
+                                <field name="matches_draw"/>
+                            </group>
+
+                            <group string="Batting statistics">
+                                <field name="total_run"/>
+                                <field name="centuries"/>
+                                <field name="half_centuries"/>
+                                <field name="fours"/>
+                                <field name="sixes"/>
+                                <field name="batting_average"/>
+                            </group>
+
+                             <group string="Bowling statistics">
+                                <field name="wicket"/>
+                                <field name="dot_balls"/>
+                                <field name="bowling_average"/>
+                                <field name="five_wicket"/>
+                            </group>
+
+                             <group string="Fielding statistics">
+                                <field name="catches"/>
+                                <field name="run_outs"/>
+                                <field name="stumping"/>
+                            </group>
+
+
+
+                             <group string="Performance Matrics">
+                                <field name="man_of_the_match"/>
+                                <field name="man_of_the_series"/>
+                            </group>
+
+                        </group>
+
+                         <group string="Football Details"  invisible="(sport_name != 'football')">
+                             <group string="Match Records">
+                                 <field name="matches_played"/>
+                                 <field name="matches_started"/>
+                                 <field name="f_matches_won"/>
+                                 <field name="goals_scored_in_wins"/>
+                                 <field name="clean_sheets_in_wins"/>
+                             </group>
+
+                              <group string="Match Statistics">
+                                 <field name="goals_scored"/>
+                                 <field name="assists"/>
+                                 <field name="pass_completion_rate"/>
+                                 <field name="shots_on_target"/>
+                                 <field name="minutes_played"/>
+                             </group>
+
+                               <group string="Team Statistics">
+                                 <field name="possession_percentage"/>
+                                 <field name="shots_on_goal"/>
+                                 <field name="passes_completed"/>
+                                 <field name="corners_taken"/>
+                                 <field name="tackles"/>
+                             </group>
+
+                             <group string="Performance Matrics">
+                                 <field name="man_of_the_match_awards"/>
+                                 <field name="average_rating"/>
+                                 <field name="distance_covered"/>
+                                 <field name="sprint_speed"/>
+                                 <field name="aerial_duels_won"/>
+                             </group>
+                         </group>
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+<!--        Tree view-->
+
+<!--            Cricket Tree VIew-->
+
+            <record id="view_cricket_tree" model="ir.ui.view">
+                <field name="name">cricket.tree</field>
+                <field name="model">sport.activity</field>
+                <field name="arch" type="xml">
+                    <tree string="Cricket Records" create="False">
+                        <field name="player_name"/>
+                        <field name="c_team"/>
+                        <field name="style"/>
+                        <field name="total_run"/>
+                        <field name="centuries"/>
+                        <field name="wicket" optional="hide"/>
+                        <field name="match_played" optional="hide"/>
+                        <field name="inning_played" optional="hide"/>
+                        <field name="c_matches_won"/>
+                        <field name="matches_lost"/>
+                        <field name="matches_draw"/>
+                    </tree>
+                </field>
+            </record>
+
+            <!-- Football Tree View -->
+            <record id="view_football_tree" model="ir.ui.view">
+                <field name="name">football.tree</field>
+                <field name="model">sport.activity</field>
+                <field name="arch" type="xml">
+                    <tree string="Football Records" create="False">
+                        <field name="player_name"/>
+                        <field name="f_team"/>
+                        <field name="position"/>
+                        <field name="matches_played"/>
+                        <field name="matches_started"/>
+                        <field name="f_matches_won"/>
+                        <field name="goals_scored_in_wins"/>
+                        <field name="clean_sheets_in_wins"/>
+                        <field name="goals_scored"/>
+                        <field name="assists"/>
+                    </tree>
+                </field>
+            </record>
+
+
+
+
+
+
+
+
+
+<!--        Action-->
+       <record id="action_sport_cricket_tree" model="ir.actions.act_window">
+            <field name="name">Cricket Records</field>
+            <field name="res_model">sport.activity</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_cricket_tree"/>
+             <field name="domain">[('sport_name', '=', 'cricket')]</field>
+           <field name="context">{'default_sport_name': 'cricket'}</field>
+        </record>
+
+         <record id="action_sport_football_tree" model="ir.actions.act_window">
+            <field name="name">Football Records</field>
+            <field name="res_model">sport.activity</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_football_tree"/>
+              <field name="domain">[('sport_name', '=', 'football')]</field>
+             <field name="context">{'default_sport_name': 'football'}</field>
+        </record>
+
+
+
+
+
+
+    </data>
+</odoo>

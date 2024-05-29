@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+
+        <!--         Inherit Teacher Menu-->
+       <record id="action_contacts_teacher" model="ir.actions.act_window">
+        <field name="name">Teacher</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+         <field name="domain">[('identity', '=', 'Teacher')]</field>
+        <field name="context">{'default_identity': 'Teacher', 'hide_student_field': 1}</field>
+
+        </record>
+
+
+
+
+    </data>
+</odoo>
+
+

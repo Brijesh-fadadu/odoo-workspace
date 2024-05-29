@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_manager,Student Manager,model_res_partner,base.group_user,1,1,1,1
+access_class_manager,class Manager,model_school_class,base.group_user,1,1,1,1
+access_sport_manager,Sport Manager,model_sport_activity,base.group_user,1,1,1,1
+access_new_class_manager,New Class Manager,model_new_class,base.group_user,1,1,1,1
+access_new_subject_manager,New Subject Manager,model_new_subject,base.group_user,1,1,1,1
+access_new_section_manager,New Section Manager,model_new_section,base.group_user,1,1,1,1
+access_general_manager,General Manager,model_general_fields,base.group_user,1,1,1,1
+access_master_education_manager,Master Education Manager,model_master_education,base.group_user,1,1,1,1
+access_student_complaint,Student Complaint,model_student_complaint,base.group_user,1,1,1,1
+
+
+
+

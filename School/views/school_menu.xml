@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Menu -->
+        <menuitem id="school_menu" name="School"/>
+
+        <menuitem id="res_partner_menu_contacts" name="Students" action="action_contacts_student" parent="school_menu" sequence="1"/>
+        <menuitem id="teacher_menu" name="Teachers" parent="school_menu" action="action_contacts_teacher" sequence="2"/>
+        <menuitem id="class_menu" name="Classes" parent="school_menu" action="action_class_tree" sequence="3"/>
+
+       <menuitem id="curricular_menu" name="Curricular" parent="school_menu" sequence="4"/>
+        <menuitem id="sports_menu" name="Sports" parent="curricular_menu"/>
+        <menuitem id="cricket_menu" name="Cricket" parent="sports_menu" action="action_sport_cricket_tree"/>
+        <menuitem id="football_menu" name="Football" parent="sports_menu" action="action_sport_football_tree"/>
+
+          <menuitem id="configration_menu" name="Configuration" parent="school_menu" sequence="5"/>
+        <menuitem id="education_menu" name="Education" parent="configration_menu"/>
+        <menuitem id="new_class_menu" name="Class" parent="education_menu" action="action_new_class"/>
+        <menuitem id="new_section_menu" name="Section" parent="education_menu" action="action_new_section"/>
+        <menuitem id="new_subject_menu" name="Subject" parent="education_menu" action="action_new_subject"/>
+        <menuitem id="master_education_menu" name="Class-Sec Mapping" parent="education_menu" action="action_master_education"/>
+
+
+
+
+
+
+
+    </data>
+</odoo>

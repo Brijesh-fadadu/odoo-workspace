@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_teacher_form" model="ir.ui.view">
+            <field name="name">teacher.form</field>
+            <field name="model">school_management.teacher</field>
+            <field name="arch" type="xml">
+                <form string="Teacher">
+                    <sheet>
+                        <group>
+                            <field name="is_teacher"/>
+                            <field name="name"/>
+                            <field name="age" invisible="is_teacher == False"/>
+                            <field name="gender" invisible="is_teacher == False"/>
+                            <field name="subject_taught"/>
+                            <field name="class_ids"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_teacher_tree" model="ir.ui.view">
+            <field name="name">teacher.form</field>
+            <field name="model">school_management.teacher</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="subject_taught"/>
+                    <field name="class_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        #Action
+        <record id="action_teacher_tree" model="ir.actions.act_window">
+            <field name="name">Teachers</field>
+            <field name="res_model">school_management.teacher</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_teacher_tree"/>
+        </record>
+
+        <record id="action_teacher_form" model="ir.actions.act_window">
+            <field name="name">Teachers</field>
+            <field name="res_model">school_management.teacher</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_teacher_form"/>
+        </record>
+
+        <menuitem id="school_menu" name="School"/>
+        <menuitem id="all_list_menu" name="All List" parent="school_menu"/>
+        <menuitem id="teacher_list_menu" name="Teacher list" action="action_teacher_tree" parent="all_list_menu"/>
+
+    </data>
+</odoo>

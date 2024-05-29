@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     Example data for classes
+    <record id="class_math" model="school_management.class">
+        <field name="name">Mathematics</field>
+    </record>
+    <record id="class_english" model="school_management.class">
+        <field name="name">English</field>
+    </record>
+    <record id="class_science" model="school_management.class">
+        <field name="name">Science</field>
+    </record>
+
+     Example data for teachers
+    <record id="teacher_Jaykishan" model="school_management.teacher">
+        <field name="name">Jaykishan Sharma</field>
+        <field name="age">35</field>
+        <field name="gender">male</field>
+        <field name="subject_taught">Mathematics, Science</field>
+        <field name="class_ids" eval="[(4, ref('class_math')), (4, ref('class_science'))]"/>
+    </record>
+
+    <record id="teacher_dipen" model="school_management.teacher">
+        <field name="name">Dipen Patel</field>
+        <field name="age">30</field>
+        <field name="gender">female</field>
+        <field name="subject_taught">English</field>
+        <field name="class_ids" eval="[(4, ref('class_english'))]"/>
+    </record>
+
+    <!-- Example data for students -->
+    <record id="student_brijesh" model="school_management.student">
+        <field name="name">Brijesh Patel</field>
+        <field name="age">17</field>
+        <field name="gender">male</field>
+        <field name="class_id" ref="class_math"/>
+
+       </record>
+
+    <record id="student_prashant" model="school_management.student">
+        <field name="name">Prashant Gohil</field>
+        <field name="age">18</field>
+        <field name="gender">female</field>
+        <field name="class_id" ref="class_english"/>
+    </record>
+
+    <record id="student_rahul" model="school_management.student">
+        <field name="name">Rahul Jaypal</field>
+        <field name="age">15</field>
+        <field name="gender">male</field>
+        <field name="class_id" ref="class_science"/>
+    </record>
+</odoo>

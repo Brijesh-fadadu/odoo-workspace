@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <template id="student_details_report">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <h1 style="text-align: center; font-size: 24px;">Student Detail Report</h1>
+                <br/><br/><br/>
+                <t t-foreach="docs" t-as="student">
+                    <div style="font-size: 20px;">
+                        <p><b>Name :</b> <t t-esc="student.display_name"/></p>
+                        <p><b>Date of Birth :</b> <t t-esc="student.dob"/></p>
+                        <p><b>Age :</b> <t t-esc="student.age"/></p>
+                        <p><b>Fees :</b> <span t-field="student.new_gender"/></p>
+                        <p><b>Email :</b> <t t-esc="student.email"/></p>
+                        <p><b>Fees :</b> <span t-field="student.status"/></p>
+                        <p><b>Subject :</b> <span t-field="student.class_id"/></p>
+                        <p><b>Class Teacher :</b> <span t-field="student.teacher_id"/></p>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </t>
+</template>
+
+    </data>
+</odoo>
+

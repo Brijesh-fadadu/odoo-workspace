@@ -1,0 +1,26 @@
+{
+    'name': 'School Management System',
+    'version': '1.0',
+    'category': 'Education',
+    'summary': 'A simple school management system for managing students, teachers, and classes.',
+    'author': 'Brijesh Patel',
+    'depends': ['base','hr'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/student_view.xml',
+        'views/teacher_view.xml',
+        'views/class_view.xml',
+        'views/school_menu.xml',
+        'views/sports.xml',
+        'views/education.xml',
+        'views/master_education.xml',
+        'views/general.xml',
+        'wizard/student_complaint.xml',
+        'report/student_report_template.xml',
+        'report/student_report_view.xml',
+
+    ],
+    'installable': True,
+    'auto_install': False,
+    'application': True,
+}

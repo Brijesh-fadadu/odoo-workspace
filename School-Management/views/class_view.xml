@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+<!--         #form view of contact module-->
+<!--        <record id="view_partner_form_inherit_student" model="ir.ui.view">-->
+<!--        <field name="name">res.partner.form.inherit.student</field>-->
+<!--        <field name="model">res.partner</field>-->
+<!--        <field name="inherit_id" ref="base.view_partner_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='vat']" position="replace">-->
+<!--                <field name="new_age"/>-->
+<!--                <field name="new_gender"/>-->
+<!--            </xpath>-->
+<!--            <field name="website" position="replace"/>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    #Tree view of Contact Module-->
+<!--    <record id="view_partner_tree_inherit_student" model="ir.ui.view">-->
+<!--        <field name="name">res.partner.tree.inherit.student</field>-->
+<!--        <field name="model">res.partner</field>-->
+<!--        <field name="inherit_id" ref="base.view_partner_tree"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree string="Contacts" sample="1" multi_edit="1">-->
+<!--                    <field name="new_age"/>-->
+<!--                    <field name="new_gender"/>-->
+<!--            </tree>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    #Kanban view of contact module-->
+<!--    <record id="view_partner_kanban_inherit_student" model="ir.ui.view">-->
+<!--        <field name="name">res.partner.kanban.inherit.student</field>-->
+<!--        <field name="model">res.partner</field>-->
+<!--        <field name="inherit_id" ref="base.res_partner_kanban_view"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--             <xpath expr="//div[hasclass('oe_kanban_details')]" position="inside">-->
+<!--                    <field name="new_gender"/>-->
+<!--                    <field name="new_age"/>-->
+<!--             </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+
+<!--        #form view of employee module-->
+<!--        <record id="inherit_student_form" model="ir.ui.view">-->
+<!--            <field name="name">student_form_inherit</field>-->
+<!--            <field name="model">hr.employee</field>-->
+<!--            <field name="inherit_id" ref="hr.view_employee_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//field[@name='mobile_phone']" position="after">-->
+<!--                    <field name="age11"/>-->
+<!--                    <field name="gender11"/>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        #kanban view of Employee Module-->
+<!--        <record id="hr_employee_kanban_gender" model="ir.ui.view">-->
+<!--            <field name="name">hr.employee.kanban</field>-->
+<!--            <field name="model">hr.employee</field>-->
+<!--            <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//div[hasclass('oe_kanban_details')]" position="inside">-->
+<!--                    <field name="gender11"/>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+
+
+        <!-- Form View -->
+        <record id="view_class_form" model="ir.ui.view">
+            <field name="name">class.form</field>
+            <field name="model">school_management.class</field>
+            <field name="arch" type="xml">
+                <form string="Class">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="teacher_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- List View -->
+        <record id="view_class_tree" model="ir.ui.view">
+            <field name="name">class.tree</field>
+            <field name="model">school_management.class</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="teacher_id"/>
+                </tree>
+            </field>
+        </record>
+
+        #Action
+        <record id="action_class_tree" model="ir.actions.act_window">
+            <field name="name">Classes</field>
+            <field name="res_model">school_management.class</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_class_tree"/>
+        </record>
+
+        <record id="action_class_form" model="ir.actions.act_window">
+            <field name="name">Classes</field>
+            <field name="res_model">school_management.class</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_class_form"/>
+        </record>
+
+        <menuitem id="school_menu" name="School"/>
+        <menuitem id="all_list_menu" name="All List" parent="school_menu"/>
+        <menuitem id="class_list_menu" name="Class list" action="action_class_tree" parent="all_list_menu"/>
+
+    </data>
+</odoo>

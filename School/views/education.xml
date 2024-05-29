@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+<!--        New Class View-->
+        <record id="new_class_form_view" model="ir.ui.view">
+            <field name="name">new_class_form_view</field>
+            <field name="model">new.class</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                <field name="class_name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+          <record id="new_class_tree_view" model="ir.ui.view">
+            <field name="name">new_class_tree_view</field>
+            <field name="model">new.class</field>
+            <field name="arch" type="xml">
+                <tree>
+                <field name="class_name"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="action_new_class" model="ir.actions.act_window">
+        <field name="name">Class Name</field>
+        <field name="res_model">new.class</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="new_class_tree_view"/>
+       </record>
+
+
+
+<!--        Section View-->
+        <record id="new_section_form_view" model="ir.ui.view">
+            <field name="name">new_section_form_view</field>
+            <field name="model">new.section</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="new_section"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+          <record id="new_section_tree_view" model="ir.ui.view">
+            <field name="name">new_section_tree_view</field>
+            <field name="model">new.section</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="new_section"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_new_section" model="ir.actions.act_window">
+        <field name="name">Section Name</field>
+        <field name="res_model">new.section</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="new_section_tree_view"/>
+       </record>
+
+
+        <!--        Subject View-->
+        <record id="new_subject_form_view" model="ir.ui.view">
+            <field name="name">new_subject_form_view</field>
+            <field name="model">new.subject</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                <field name="new_subject"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+          <record id="new_subject_tree_view" model="ir.ui.view">
+            <field name="name">new_subject_tree_view</field>
+            <field name="model">new.subject</field>
+            <field name="arch" type="xml">
+                <tree>
+                <field name="new_subject"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_new_subject" model="ir.actions.act_window">
+        <field name="name">Subject Name</field>
+        <field name="res_model">new.subject</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="new_subject_tree_view"/>
+       </record>
+
+
+
+
+<!--        Menu-->
+
+
+
+    </data>
+</odoo>
